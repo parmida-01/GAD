@@ -31,10 +31,27 @@ def h(x, i, m):
 
 if __name__ == "__main__":
     m = 13
-    x = int(input("x = "))
-    i = int(input("i = "))
+    while True:
+        try:
+            x = int(input("x = "))
+            i = int(input("i = "))
+        except (EOFError, KeyboardInterrupt):
+            print()
+            break
+        except ValueError:
+            print("Bitte ganze Zahlen eingeben.")
+            continue
 
-    print(f"h1({x})        = {h1(x, m)}")
-    print(f"h2({x})        = {h2(x, m)}")
-    print(f"s({x}, {i})     = {s(x, i, m)}")
-    print(f"h({x}, {i})     = {h(x, i, m)}")
+        rows = [
+            (f"h({x}, {i})", h(x, i, m)),
+            (f"h1({x})", h1(x, m)),
+            (f"h2({x})", h2(x, m)),
+            (f"s({x}, {i})", s(x, i, m)),
+        ]
+        width = max(len(name) for name, _ in rows)
+
+        print(f"| {'Funktion':<{width}} | Wert |")
+        print(f"|{'-' * (width + 2)}|------|")
+        for name, value in rows:
+            print(f"| {name:<{width}} | {value:>4} |")
+        print()
