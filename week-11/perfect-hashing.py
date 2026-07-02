@@ -1,6 +1,4 @@
 """Berechnet fuenf Funktionen aus drei ganzzahligen Eingaben.
-
-Die konkreten Funktionen werden noch eingesetzt (Platzhalter unten).
 """
 
 
